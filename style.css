@@ -1,21 +1,234 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #2563eb;
+    --secondary-color: #1e40af;
+    --accent-color: #00d4ff;
+    --text-dark: #1f2937;
+    --text-light: #6b7280;
+    --bg-light: #f9fafb;
+    --bg-white: #ffffff;
+    --border-color: #e5e7eb;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    font-family: Arial,  sans-serif; /* Font family */
-    font-size: 11px; /* O tamanho da fonte principal<p></p> tag  */
-    background-color: #f0f0f0; /* A cor do plano de fundo da página */
-    color: #333333; /* A cor do texto */ 
-}
-h1 {
-    color: #00a800; /* A cor do cabeçalho */
-    font-size: 24px; /* A cor da fonte do cabeçalho */
-    font-family: Georgia, serif; /* A font usada no cabeçalho*/
-}
-
-@keyframes colorchange {
-    0% { color: blue;}
-    50% { color: red;}
-    100% { color: blue;}
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    color: var(--text-dark);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-h3 {
-    animation: colorchange 5s infinite;
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
+}
+
+/* Header */
+.header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    padding: 40px 0;
+    text-align: center;
+    box-shadow: var(--shadow-lg);
+    margin-bottom: 40px;
+}
+
+.logo {
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: -1px;
+}
+
+.tagline {
+    font-size: 18px;
+    font-weight: 300;
+    opacity: 0.9;
+}
+
+/* Main Content */
+main {
+    flex: 1;
+}
+
+/* Sections */
+.section {
+    background: var(--bg-white);
+    padding: 40px;
+    margin-bottom: 40px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    animation: fadeIn 0.6s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.section-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Grids */
+.weather-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+
+.widgets-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.radio-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+/* Widget Wrapper */
+.widget-wrapper {
+    background: var(--bg-light);
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.widget-wrapper:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+}
+
+.widget-wrapper h3 {
+    font-size: 20px;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.widget-credit {
+    text-align: right;
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+.widget-credit a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+.widget-credit a:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
+/* Footer */
+.footer {
+    background: linear-gradient(135deg, var(--text-dark) 0%, #374151 100%);
+    color: white;
+    padding: 30px 0;
+    text-align: center;
+    margin-top: auto;
+}
+
+.footer p {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .logo {
+        font-size: 32px;
+    }
+
+    .tagline {
+        font-size: 16px;
+    }
+
+    .section {
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    .section-title {
+        font-size: 22px;
+    }
+
+    .weather-grid,
+    .widgets-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .widget-wrapper {
+        padding: 15px;
+    }
+
+    .widget-wrapper h3 {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        padding: 25px 0;
+    }
+
+    .logo {
+        font-size: 24px;
+    }
+
+    .tagline {
+        font-size: 14px;
+    }
+
+    .container {
+        padding: 0 15px;
+    }
+
+    .section {
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+
+    .section-title {
+        font-size: 18px;
+    }
 }
